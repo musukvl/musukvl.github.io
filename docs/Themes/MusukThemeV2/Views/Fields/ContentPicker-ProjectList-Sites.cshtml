@@ -1,0 +1,18 @@
+﻿@using Orchard.ContentManagement
+@using Orchard.ContentPicker.Fields
+@using Orchard.Utility.Extensions;
+
+@{
+    var field = (ContentPickerField) Model.ContentField;
+    var contentItems = field.ContentItems;
+    var contentManager = WorkContext.Resolve<IContentManager>();
+}
+
+@if (contentItems.Any())
+{
+    <h2 class="other-projects">@T("Сайты")</h2>
+    foreach (var contentItem in contentItems)
+    {
+        @Display(contentManager.BuildDisplay(contentItem, "Summary"))
+    }
+}

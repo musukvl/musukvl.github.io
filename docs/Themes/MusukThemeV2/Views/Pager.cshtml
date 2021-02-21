@@ -1,0 +1,31 @@
+﻿@using Orchard.ContentManagement
+@{
+    var contentItem = (IContent)Model.ContentItem;
+    long totalCount = Model.TotalItemCount;
+    long currentPage = Model.Page;
+    long perPage = Model.PageSize;        
+    long pagesCount = (totalCount / perPage) + ((totalCount % perPage) == 0 ? 0 : 1);
+
+    long prevPage = (currentPage == 1) ? 1 : (currentPage - 1);
+    long nextPage = (currentPage == pagesCount) ? pagesCount : (currentPage + 1);
+}
+@if (pagesCount > 1)
+{
+    <nav class="pagination">
+        <ul>
+            @for(int i = 1; i <= pagesCount; i++)
+            {
+                if (i == currentPage)
+                {
+                    <li class="active">@i</li>   
+                }
+                else
+                {
+                    <li>
+                        <a href="@(Url.ItemDisplayUrl(contentItem))?page=@(i)">@i</a>
+                    </li>
+                }
+            }
+        </ul>
+    </nav>
+}

@@ -1,0 +1,91 @@
+﻿<!DOCTYPE HTML>
+@using Amba.HtmlBlocks.Extensions
+@using Amba.HtmlBlocks.Services
+@using Amba.OrchardTools.Extensions
+@using Orchard.Mvc.Extensions
+@{
+    if (Model.Language == null || string.IsNullOrWhiteSpace(Model.Language)) {
+        Model.Language = "ru";
+    }
+}
+<html lang="@Model.Language">
+<head >
+    @{
+        var version = "9";
+        Script.Include("html5.js").UseCondition("lt IE 9").AtHead();
+
+        string title = Convert.ToString(Model.Title);
+        string siteName = Convert.ToString(WorkContext.CurrentSite.SiteName);
+        var blockService = WorkContext.Resolve<IHtmlBlockService>();
+        var currentPageUrl = WorkContext.HttpContext.Request.RawUrl;
+    }
+    <title>@Html.Title(T(title).ToString(), T(siteName).ToString())</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link type="text/css" href="@Html.ThemePath("/Content/stylesheets/app.css")?v=@(version)" rel="stylesheet"/>
+    <link type="text/css" href="@Html.ThemePath("/Content/stylesheets/site.css")?v=@(version)" rel="stylesheet"/>
+    <link type="text/css" href="@Html.ThemePath("/Styles/style.min.css")?v=@(version)" rel="stylesheet"/>
+    <link type="text/css" href="@Html.ThemePath("/Content/bower_components/components-font-awesome/css/font-awesome.min.css")?v=@(version)" rel="stylesheet"/>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/Media/Default/favicons/Media/Default/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/Media/Default/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/Media/Default/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/Media/Default/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/Media/Default/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/Media/Default/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/Media/Default/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/Media/Default/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/Media/Default/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/Media/Default/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Media/Default/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/Media/Default/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/Media/Default/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/Media/Default/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/Media/Default/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    @*
+        string Layout.Description
+        string Layout.TeaserImage
+    *@
+    @* Twitter Card data *@
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content="@("@musuk")"/>
+    <meta name="twitter:title" content="@title"/>
+    <meta name="twitter:description" content="@Model.Description"/>
+    <meta name="twitter:creator" content="@("@musuk")"/>
+    @* twitter summary card images must be at least 120x120px *@
+    @if (Model.TeaserImage != null) {
+        <meta name="twitter:image" content="@Url.MakeAbsolute(Url.ResizedImageUrl((string) Layout.TeaserImage, 500).ToString())"/>
+    }@* Schema.org markup for Google+ *@<meta itemprop="name" content="@title"/>
+    <meta itemprop="description" content="@Model.Description"/>
+    @if (Model.TeaserImage != null) {
+        <meta itemprop="image" content="@Url.MakeAbsolute(Url.ResizedImageUrl((string) Layout.TeaserImage, 300).ToString())"/>
+    }
+
+    @* Open Graph data *@<meta property="og:title" content="@title"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="@Url.MakeAbsolute(currentPageUrl)"/>
+    @if (Model.TeaserImage != null) {
+        <meta property="og:image" content="@Url.MakeAbsolute(@Url.ResizedImageUrl((string) Layout.TeaserImage, 300).ToString())"/>
+    }
+    <meta property="og:description" content="@Model.Description"/>
+    <meta property="og:site_name" content="Musuk's pages"/>
+
+    @Display(Model.Head)
+    @Html.HtmlBlock("HEAD_SCRIPTS")
+</head>
+<body>
+
+@Display(Model.Body)
+
+<script src="@Html.ThemePath("/Content/js/core.min.js")?v=@(version)"></script>
+<script src="@Html.ThemePath("/Content/js/app.js")?v=@(version)"></script>
+<script src="//u-login.com/js/ulogin.js"></script>
+@Display(Model.Tail)
+
+@Html.HtmlBlock("FOOT_SCRIPTS")
+</body>
+</htmllang="ru">

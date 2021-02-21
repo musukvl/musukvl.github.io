@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bundle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://vswebessentials.com/schemas/v1/bundle.xsd">
+  <settings>
+    <minify>true</minify>
+    <runOnBuild>true</runOnBuild>  
+    <outputDirectory />
+  </settings>
+  
+  <files>
+           
+    <file>/Content/bower_components/jquery/dist/jquery.js</file>
+    
+    <file>/Content/bower_components/jquery.cookie/jquery.cookie.js</file>
+    <file>/Content/bower_components/jquery-mousewheel/jquery.mousewheel.js</file>
+    <file>/Content/bower_components/jquery-placeholder/jquery.placeholder.js</file>
+    <file>/Content/bower_components/amba.imageviewer/amba.imageviewer.js</file>
+    <file>/Content/bower_components/foundation/js/foundation.min.js</file>
+    <file>/Content/bower_components/highlightjs/highlight.pack.js</file>
+    
+  </files>
+</bundle> 

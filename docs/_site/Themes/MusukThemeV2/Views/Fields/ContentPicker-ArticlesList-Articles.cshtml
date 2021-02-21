@@ -1,0 +1,19 @@
+﻿@using Orchard.ContentPicker.Fields
+
+@{
+    var field = (ContentPickerField) Model.ContentField;
+    var contentItems = field.ContentItems.ToList();
+}
+@if (contentItems.Any())
+{
+    <div class="blog-post-index">
+        <ul>
+            @foreach (var contentItem in contentItems)
+            {
+                <li>
+                    @Html.ItemDisplayLink(contentItem)
+                </li>
+            }
+        </ul>
+    </div>
+}

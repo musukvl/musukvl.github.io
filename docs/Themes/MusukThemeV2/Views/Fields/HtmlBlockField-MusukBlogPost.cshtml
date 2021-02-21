@@ -1,0 +1,7 @@
+﻿@using Amba.HtmlBlocks.Fields
+@using MusukContent
+@{
+    var field = (HtmlBlockField)Model.Field;
+    var service = WorkContext.Resolve<IMusukMlService>();
+}
+@Html.Raw(service.Process(field.HTML))

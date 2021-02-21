@@ -1,0 +1,17 @@
+﻿@{
+    Layout.Title = Model.ContentItem.TitlePart.Title;
+}
+<div class="projection">
+    @if (Model.Header != null)
+    {
+        <div class="projection-header">
+            @Display(Model.Header)
+        </div>
+    }
+    @Display(Model.Content)
+    @if(Model.Footer != null) {
+        <div class="projection-footer">
+            @Display(Model.Footer)
+        </div>
+    }
+</div>

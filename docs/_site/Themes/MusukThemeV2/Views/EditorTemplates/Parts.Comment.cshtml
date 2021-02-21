@@ -1,0 +1,37 @@
+﻿@model Orchard.Comments.Models.CommentPart
+@using Amba.ULogin.Services
+@using Orchard.Mvc
+@using System.Web.Mvc.Html
+@Html.Hidden("Name", WorkContext.CurrentUser.UserName ?? "")
+
+@Html.HiddenFor(m => m.CommentedOn)
+@Html.HiddenFor(m => m.RepliedOn)
+@if (WorkContext.CurrentUser != null)
+{
+    var prettyName = WorkContext.Resolve<IUserToolsService>().GetUserPrettyName(WorkContext.CurrentUser.ContentItem);
+    <fieldset class="what">
+        <div>
+            @(prettyName) 
+            <span>
+                @Html.ActionLink(T("Выйти").ToString(), "LogOff", new { Controller = "Account", Area = "Orchard.Users", ReturnUrl = Context.Request.RawUrl }, new { rel = "nofollow" })
+            </span>
+        </div>
+        <div class="form-field">
+            <div>
+                @Html.LabelFor(m => m.CommentText, T("Email для уведомления об ответе (не обязательно)") + ":", new { @class = "comment-label" })
+            </div>
+            <div>
+                @Html.TextBox("Email", WorkContext.CurrentUser.Email ?? "", new { @class="mail-textbox", type="email" })
+            </div>
+        </div>
+        <div class="form-field">
+            <div>
+                @Html.LabelFor(m => m.CommentText, T("Комментарий") + ":", new { @class = "comment-label" })
+
+            </div>
+            <div>
+                @Html.TextAreaFor(m => m.CommentText, new { @class = "comment-text" })
+            </div>
+        </div>
+    </fieldset>
+}

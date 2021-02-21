@@ -1,0 +1,34 @@
+﻿@using Amba.HtmlBlocks.Fields
+@using Amba.ImagePowerTools.Fields
+@using MusukContent
+@using Orchard.MediaLibrary.Fields
+@{                                                         
+    var service = WorkContext.Resolve<IMusukMlService>();
+    Layout.TeaserImage = ((ImageMultiPickerField)Model.ContentItem.MusukBlogPost.MetadataPart.TeaserImage).FirstMediaUrl;
+    Layout.Language = Model.ContentItem.MusukBlogPost.Culture.Value as string;
+}
+<article class="blog-post">
+    <header>
+        @Display(Model.Header)
+    </header>
+    <div class="article-text">
+    @Html.Raw(service.Process((string)Model.ContentItem.MusukBlogPost.Teaser.HTML))
+    @Html.Raw(service.Process((string)Model.ContentItem.MusukBlogPost.Body.HTML))
+    
+    </div>
+</article>
+<div class="list-of-comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'musukguru';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>

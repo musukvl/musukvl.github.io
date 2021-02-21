@@ -1,0 +1,12 @@
+﻿@using Amba.ImagePowerTools.Fields
+@using Amba.ImagePowerTools.HtmlHelpers
+@using System.Linq
+@{
+    var field = (ImageMultiPickerField)Model.Field;
+}
+
+@if (field.Images.Any())
+{
+    var image = field.Images.First();
+    @Html.ResizedImage(image.FilePath, width:250, htmlAttributes: new { alt="", @class="cv-photo"})             
+}

@@ -1,0 +1,69 @@
+<Placement>
+  <!-- Customize where the shapes are rendered -->
+
+  <!-- 
+  <Place Parts_Blogs_BlogArchives="Content:before"/>
+  <Place Parts_Blogs_RecentBlogPosts="Content:after"/>
+  <Match ContentType="Blog">
+    <Match DisplayType="Summary">
+      <Place Parts_Blogs_Blog_Description="Content:before"
+             Parts_Blogs_Blog_BlogPostCount="Meta:3"/>
+    </Match>
+  </Match>
+  <Match Path="/About">
+    <Place Parts_Common_Metadata="-"/>
+  </Match>
+-->
+  <Place Parts_Tags_ShowTags="-"/>
+  <Place Parts_Common_Metadata_Summary="-"/>
+  <Place Parts_Common_Metadata="-"/>
+  <Place Fields_Common_Text-ShortTitle="-"/>
+  <Place Fields_ImageMultiPicker-TeaserImage="-"/>
+  <Place Parts_MetadataPart="-"/>
+
+  <Match DisplayType="Summary" ContentType="MusukBlogPost">
+    <Place Fields_HtmlBlockField="-"/>
+    <Place Parts_Tags_ShowTags="-"/>
+    <Place Parts_Comments_Count="CommentsZone:1" />
+  </Match>
+
+  <Match Path="/">
+    <Match ContentType="ProjectionPage">
+      <Place Parts_Title="-"/>
+    </Match>    
+    <Match Path="/" DisplayType="Summary" ContentType="MusukBlogPost">
+      <Place Parts_Common_Metadata_Summary="PostDate:1"/>
+      <Place Parts_Title_Summary="Header:1"/>
+      <Place Fields_HtmlBlockField-Teaser="Content:10;Wrapper=ReadMoreWrapper"/>
+    </Match>
+  </Match>
+
+  <Match Path="/blog">
+    <Match ContentType="ProjectionPage">
+      <Place Parts_Title="-"/>
+    </Match>
+    <Match Path="/blog" DisplayType="Summary" ContentType="MusukBlogPost">
+      <Place Parts_Common_Metadata_Summary="PostDate:1"/>
+      <Place Parts_Title_Summary="Header:1"/>
+      <Place Fields_HtmlBlockField-Teaser="Content:10;Wrapper=ReadMoreWrapper"/>
+    </Match>
+  </Match>
+
+  <Match ContentType="CVPage">
+    <Place Fields_ImageMultiPicker-Photo="Photo:1"/>
+    <Place Parts_Title="Head:1"/>
+    <Place Fields_HtmlBlockField-Body="Content:1"/>
+
+  </Match>
+
+  <Match ContentType="ProjectList">
+    <Place Fields_ContentPicker-OrchardModules="Content:10"/>
+    <Place Fields_ContentPicker-Sites="Content:11"/>
+    <Place Fields_ContentPicker-Projects="Content:12"/>
+  </Match>
+
+  <Match ContentType="ArticlesList">
+    <Place Fields_ImageMultiPicker-Logo="-"/>
+  </Match>
+
+</Placement>

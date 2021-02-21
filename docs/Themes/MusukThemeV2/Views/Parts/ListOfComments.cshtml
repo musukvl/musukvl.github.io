@@ -1,0 +1,13 @@
+﻿@using Orchard.Comments.Models
+@{
+    CommentsPart commentsPart = Model.ContentPart;
+}
+<div id="comments" class="list-of-comments">
+    <div  class="comment-count">
+        @T.Plural("Нет комментариев", "1 комментарий", "{0} коментариев", (int)Model.CommentCount)
+    </div>
+    @foreach (var shape in Model.List)
+    {
+        @Display(shape)
+    }
+</div>

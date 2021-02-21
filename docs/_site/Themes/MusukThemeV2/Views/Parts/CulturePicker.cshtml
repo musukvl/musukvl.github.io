@@ -1,0 +1,18 @@
+﻿@using System.Globalization
+@{
+    var cultures = (List<string>) Model.AvailableCultures;
+}
+<div class="culture-picker">
+@foreach (string culture in cultures)
+{
+    var cultureInfo = new CultureInfo(culture);
+    var cultureName = cultureInfo.TwoLetterISOLanguageName.ToLowerInvariant();
+    <a href="/ChangeCulture?CultureName=@cultureInfo.Name" class="culture-selector" title="@cultureInfo.NativeName">
+        @cultureName.ToUpper()
+    </a>
+    if (culture != cultures.Last())
+    {
+        <text> | </text>
+    }
+}
+</div>

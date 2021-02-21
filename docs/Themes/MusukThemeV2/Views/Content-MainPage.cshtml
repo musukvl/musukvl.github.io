@@ -1,0 +1,68 @@
+﻿@using System.Linq
+@using Orchard.Mvc.Html
+@using Orchard.ContentManagement
+@using Orchard.Core.Title.Models
+@using Amba.ImagePowerTools.Fields
+@{
+    var contentManager = WorkContext.Resolve<IContentManager>();
+    var pickerField = Model.ContentItem.MainPage.ArticleLists as Orchard.ContentPicker.Fields.ContentPickerField;
+
+}
+<div class="main-page-articles main-page">
+    <ul class="large-block-grid-2 medium-block-grid-1 small-block-grid-1">
+        @foreach (var articleList in pickerField.Ids.Select(x => contentManager.Get(x, VersionOptions.Published)).ToList())
+        {
+            if (articleList == null)
+            {
+                continue;
+            }
+            var articleTypeLogoField = ((dynamic)articleList).ArticlesList.Logo as ImageMultiPickerField;
+            if (articleTypeLogoField == null)
+            {
+                continue;
+            }
+            var title = articleList.As<TitlePart>().Title;
+            var logo = articleTypeLogoField.Images.First();
+            var articleListUrl = Url.ItemDisplayUrl(articleList);
+            <li class="article-list-box">
+                <div class="article-list-header inline-table">
+                    <div class="inline-row">
+                        <div class="list-logo inline-cell">
+                            <a href="@articleListUrl"><img src="@Url.ResizedImageUrl(logo.FilePath, 60)" alt="@(title)" /></a>
+                        </div>
+                        <div class="list-title inline-cell">
+                            <h2>
+                                <a href="@articleListUrl">@title</a>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <ul>
+                    @{
+            var artilceListField = ((dynamic)articleList).ArticlesList.Articles as Orchard.ContentPicker.Fields.ContentPickerField;
+            if (artilceListField == null)
+            {
+                continue;
+            }
+                    }
+                    @foreach (var article in artilceListField.Ids.Select(x => contentManager.Get(x, VersionOptions.Published)).ToList())
+                    {
+                        if (article == null)
+                        {
+                            continue;
+                        }
+                        string articleTitle = ((dynamic)article).MusukBlogPost.ShortTitle.Value;
+                        if (string.IsNullOrWhiteSpace(articleTitle))
+                        {
+                            articleTitle = article.As<TitlePart>().Title;
+                        }
+                        <li>
+                            <a href="@Url.ItemDisplayUrl(article)">@(articleTitle)</a>
+                        </li>
+                    }
+                </ul>
+
+            </li>
+        }
+    </ul>
+</div>

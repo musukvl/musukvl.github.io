@@ -1,0 +1,14 @@
+<div class="content-items-list">
+@foreach (var item in Model)
+{
+    <div class="content-items-list">
+        @Display(item)
+    </div>
+    if (item != Model.Last())
+    {
+        <div class="list-separator">
+            * * *
+        </div>
+    }
+}
+</div>

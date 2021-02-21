@@ -1,0 +1,43 @@
+﻿@{
+    SetMeta("X-UA-Compatible", "IE=edge,chrome=1");
+    Style.Include("site.css", "site.min.css");
+    Style.Include(Html.ThemePath("/Scripts/highlight.js/styles/vs.css"));
+   
+    Script.Include("highlight.js/highlight.pack.js").AtHead();
+    
+    Func<dynamic, dynamic> Zone = x => Display(x); // Zone as an alias for Display to help make it obvious when we're displaying zones
+}
+<script type="text/javascript">hljs.initHighlightingOnLoad(); hljs.tabReplace = '    ';</script>
+<div id="main-box">
+    <header id="header-box">
+        <div id="site-title-box">    
+            <h1 id="site-title">
+                <a href="/">Musuk's pages</a>
+            </h1>
+        </div>
+        <div id="culture-picker-box">
+            @if (Model.CulturePicker != null)
+            {
+                @Zone(Model.CulturePicker)
+            }
+        </div>
+   
+    </header>
+    <div id="center-box">
+        <aside id="left-box">
+            @if (Model.Navigation != null) {
+                @Zone(Model.Navigation)
+            }
+        </aside>
+
+        <div id="content">
+            @if (Model.Content != null) {
+                @Zone(Model.Content)
+            }
+        </div>
+    </div>
+    <footer id="footer">
+        <div id="footer-content">﻿@T("Алексей Ряжских"), 2010 &ndash; @DateTime.Now.Year</div>
+    </footer>
+    
+</div>

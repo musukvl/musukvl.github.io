@@ -1,0 +1,44 @@
+﻿@using NHibernate.Linq
+@using Orchard.Comments.Models
+@using Orchard.Comments.Services
+@using Orchard.ContentManagement
+@using Orchard.Utility.Extensions
+@{
+    var contentItem = (IContent) Model.ContentItem;
+    var commentService = WorkContext.Resolve<ICommentService>();
+    var commentsCount = commentService.GetCommentsForCommentedContent(contentItem.Id).Where(x => x.Status == CommentStatus.Approved).Count();
+}
+<div class="blog-post-summary">
+    @if (Model.PostDate != null)
+    {
+        @Display(Model.PostDate)
+    }
+    @if (Model.Header != null)
+    {
+        <div class="post-header-box">
+            <h2>@Html.ItemDisplayLink((IContent)Model.ContentItem)</h2>
+        </div>
+    }
+    <div class="blog-post">
+        @Display(Model.Content)
+    </div>
+    @if (Model.Footer != null)
+    {
+        <div>
+            @Display(Model.Footer)
+        </div>
+    }
+    <div class="blog-post-summary-info">
+        @if (commentsCount > 0)
+        {
+            <a href="@(Url.ItemDisplayUrl(contentItem))#comments">
+                @T.Plural("Нет комментариев", "1 комментарий", "{0} коментариев", commentsCount)
+            </a>
+            <text> | </text>
+        }
+        <a href="@(Url.ItemDisplayUrl(contentItem))#leave_comment">
+            @T("Оставить комментарий")
+        </a>
+    </div>
+</div>
+

@@ -1,0 +1,24 @@
+﻿@using Orchard.Utility.Extensions;
+@using Orchard.Media.Helpers;
+
+@{
+    string name = Model.ContentField.DisplayName;  
+}
+<ul class="download">
+   <li> 
+        <a href="/download@(Url.Content(Model.ContentField.Url))" class="value">Скачать (pdf)</a>
+    </li>
+</ul>
+
+@* Other available properties *@
+@* 
+    Alternate Text: @Model.ContentField.AlternateText
+    Class: @Model.ContentField.Class
+    Style: @Model.ContentField.Style
+    Alignment @Model.ContentField.Alignment
+    Width: @Model.ContentField.Width
+    Height: @Model.ContentField.Height
+    
+    You can also display an image using this example, and add the attributes you need:
+    <img src="@Url.Content(Model.ContentField.Url)" />
+*@
