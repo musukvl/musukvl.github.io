@@ -1,7 +1,0 @@
-Name: MusukThemeV2
-Author: Alexey V. Ryazhskikh
-Website: http://musuk.guru
-Description: Description for the theme
-Version: 1.0
-# todo: provide tags
-Zones: CulturePicker, Navigation, Common, MobileNavigation

@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+
+<html lang="ru">
+
+<head>
+    <title>Musuk Pages</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" href="/Themes/MusukThemeV2/Content/stylesheets/app.css?v=9" rel="stylesheet" />
+    <link type="text/css" href="/Themes/MusukThemeV2/Content/stylesheets/site.css?v=9" rel="stylesheet" />
+    <link type="text/css" href="/Themes/MusukThemeV2/Styles/style.min.css?v=9" rel="stylesheet" />
+    <link type="text/css"
+        href="/Themes/MusukThemeV2/Content/bower_components/components-font-awesome/css/font-awesome.min.css?v=9"
+        rel="stylesheet" />
+
+    <link rel="apple-touch-icon" sizes="57x57"
+        href="/Media/Default/favicons/Media/Default/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/Media/Default/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/Media/Default/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/Media/Default/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/Media/Default/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/Media/Default/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/Media/Default/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/Media/Default/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/Media/Default/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/Media/Default/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Media/Default/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/Media/Default/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/Media/Default/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/Media/Default/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/Media/Default/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@musuk" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:creator" content="@musuk" />
+
+    <meta itemprop="name" content="" />
+    <meta itemprop="description" content="" />
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://musuk.guru/" />
+    <meta property="og:description" content="" />
+    <meta property="og:site_name" content="Musuk's pages" />
+
+    <meta content="Orchard" name="generator" />
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+</head>
+
+<body>
+
+
+    <nav class="top-bar show-for-medium-down mobile-top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+            <li class="name">
+                <h1 class="mobile-site-logo">
+                    <a href="/">Musuk Pages</a>
+                </h1>
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+        </ul>
+        <section class="top-bar-section">
+            <ul class="left">
+                <li class="has-form">
+                    <form action="/Search" method="GET" id="mobile-search-form">
+                        <div class="row collapse">
+                            <div class="large-8 small-9 columns">
+                                <input type="text" name="q" placeholder="Search" class="search-query-input">
+                            </div>
+                            <div class="large-4 small-3 columns">
+                                <input type="submit" class="alert button expand" value="Search" />
+                            </div>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+
+            <ul id="show-for-medium-down">
+            </ul>
+        </section>
+    </nav>
+
+    <div class="row show-for-large-up">
+        <header class="large-12 column">
+            <div class="site-header">
+                <div class="site-title">
+                    <a href="/">Musuk's pages</a>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div class="row content-row">
+        {% if page.url == '/' %}            
+        <div class="column large-2 left-menu show-for-large-up">
+            <form action="/Search" method="GET" id="search-form">
+                <input type="text" name="q" class="search-query-input" /><i class="fa fa-search"
+                    id="input-search-button"></i>
+            </form>
+            <div class="zone zone-navigation">
+                <nav class="left-menu-items-list">
+                    <ul>
+                        <li class="dropdown"><a href="/blog">Articles</a>
+                            <ul>
+                                <li><a href="/blog/raspberry-pi">Raspberry PI</a>
+                                </li>
+                                <li><a href="/orchardcms">Orchard CMS</a>
+                                </li>
+                                <li><a href="/umbraco">Umbraco CMS</a>
+                                </li>
+                                <li><a href="/xml-xslt">XML и XSLT</a>
+                                </li>
+                                <li><a href="/html_and_js">Html и JavaScript</a>
+                                </li>
+                                <li><a href="/dot-net">.Net</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        {% endif %}
+        <div class="column large-10 medium-12 main-content">
+            <div class="zone zone-content">
+                {{ content }}
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/Themes/MusukThemeV2/Content/js/core.min.js?v=9"></script>
+    <script src="/Themes/MusukThemeV2/Content/js/app.js?v=9"></script>
+
+</body>
+
+</html>
