@@ -5,3 +5,4 @@
 .vscode/
 _site/
 .jekyll-cache/
+.jekyll-metadata
