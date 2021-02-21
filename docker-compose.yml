@@ -5,5 +5,5 @@ services:
     command: jekyll serve --watch --incremental
     ports:
         - 4000:4000
-    #volumes:
-    #    - ./docs:/srv/jekyll
+    volumes:
+        - .:/srv/jekyll
