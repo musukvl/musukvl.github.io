@@ -1,7 +1,0 @@
-{
-  "name": "[Optional] Your project name here",
-  "dockerComposeFile": "./docker-env/docker-compose.yml",
-  "service": "jekyll",
-  "workspaceFolder": "/srv/jekyll",
-  "shutdownAction": "stopCompose"
-}
