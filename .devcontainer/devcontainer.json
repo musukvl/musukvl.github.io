@@ -14,7 +14,18 @@
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [],
+	"extensions": [
+                "redhat.vscode-yaml",
+		"sissel.shopify-liquid",
+		"ginfuru.ginfuru-vscode-jekyll-syntax",
+		"ginfuru.vscode-jekyll-snippets",
+		"yzhang.markdown-all-in-one",
+		"davidanson.vscode-markdownlint",
+		"ecmel.vscode-html-css",
+		"aeschli.vscode-css-formatter",
+		"streetsidesoftware.code-spell-checker",
+		"ms-vscode.wordcount"
+        ],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
